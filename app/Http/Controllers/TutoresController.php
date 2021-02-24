@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tutor;
 
 class TutoresController extends Controller
 {
@@ -37,7 +38,7 @@ class TutoresController extends Controller
         request()->validate([
             'companyName'=>['required','max:20'],
             'docType'=>['required','max:30'],
-            'dni'=>['required','regex:/^[0-9]{8}[A-Z]$/','unique:examen,dni'],
+            'dni'=>['required','regex:/^[0-9]{8}[A-Z]$/','unique:tutors,dni'],
             'tutorName'=>['required','max:20'],
             'tutorSurname1'=>['required','max:30'],
             'tutorSurname1'=>['required','max:30','nullable'],
@@ -48,6 +49,22 @@ class TutoresController extends Controller
             'tlf'=>['required','numeric','digits:9'],
             'email'=>['required','email'],
         ]);
+        $model = new Tutor ([
+            'companyName' => request()->get('companyName'),
+            'docType' => request()->get('docType'),
+            'dni' => request()->get('dni'),
+            'tutorName' => request()->get('tutorName'),
+            'tutorSurname1' => request()->get('tutorSurname1'),
+            'tutorSurname2' => request()->get('tutorSurname2'),
+            'dniCountry' => request()->get('dniCountry'),
+            'province' => request()->get('province'),
+            'municipi' => request()->get('municipi'),
+            'status' => request()->get('status'),
+            'tlf' => request()->get('tlf'),
+            'email' => request()->get('email'),
+        ]);
+        $model->save();
+        return redirect('/')->with('success', 'Contact updated!');
     }
 
     /**
