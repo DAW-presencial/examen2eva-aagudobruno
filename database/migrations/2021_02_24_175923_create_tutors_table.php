@@ -17,10 +17,10 @@ class CreateTutorsTable extends Migration
             $table->id();
             $table->string('companyName');
             $table->string('docType');
-            $table->string('dni', 9);
+            $table->string('dni', 9)->unique();
             $table->string('tutorName');
             $table->string('tutorSurname1');
-            $table->string('tutorSurname2');
+            $table->string('tutorSurname2')->nullable();
             $table->string('dniCountry');
             $table->string('province');
             $table->string('municipi');
