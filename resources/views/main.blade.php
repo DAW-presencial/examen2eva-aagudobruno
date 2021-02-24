@@ -5,7 +5,16 @@
 @endsection
 
 @section('main')
-    <form method="POST" class="w-50 border border-primary rounded">
+    <div class="row">
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif  
+    </div>
+    <form method="POST" class="w-50 row  border border-primary rounded">
         @csrf
         <div class="row p-4">
             <h5>Tutor:</h5>
