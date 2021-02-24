@@ -24,7 +24,7 @@ class TutoresController extends Controller
      */
     public function create()
     {
-        //
+        return view('main');
     }
 
     /**

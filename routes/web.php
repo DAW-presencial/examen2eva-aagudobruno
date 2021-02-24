@@ -14,6 +14,6 @@ use App\Http\Controllers\TutoresController;
 |
 */
 
-Route::view('/','main');
+Route::get('/',[TutoresController::class,'create']);
 
 Route::post('/',[TutoresController::class,'store']);
