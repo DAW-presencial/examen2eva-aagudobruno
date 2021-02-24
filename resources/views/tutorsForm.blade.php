@@ -65,6 +65,8 @@
     <label for="status" class="form-label col-3 align-self-center">Estado</label>
     <div class="col px-0">
         <input id="status" name="status" type="select" class="form-control">
+            <option value="active" @if (old('status')=="active") selected @endif>Activo</option>
+            <option value="inactive" @if (old('status')=="inactive") selected @endif>Inactivo</option>
         {!!$errors->first('status','<small class="text-danger">:message</small></br>')!!}
     </div>    
 </div>
